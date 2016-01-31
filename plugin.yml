@@ -1,0 +1,21 @@
+name: oCore
+main: io.ohho.oCore.Main
+version: 1.2.0
+author: ohho
+description: oCore core commands.
+
+commands:
+    coords:
+        description: Coords command!
+    rules:
+        description: Rules command!
+    help:
+        description: Help command!    
+    commandsreload:
+        description: Reload command!
+    f:
+        description: Factions command!
+    cc:
+        description: CC command!
+    koth:
+        description: Koth command!
