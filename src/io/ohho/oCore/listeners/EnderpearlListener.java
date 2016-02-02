@@ -5,11 +5,8 @@ import java.util.Map;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
-import org.bukkit.block.Block;
 import org.bukkit.entity.EnderPearl;
-import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Projectile;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -17,13 +14,13 @@ import org.bukkit.event.block.Action;
 import org.bukkit.event.entity.ProjectileLaunchEvent;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerTeleportEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class EnderpearlListener
 implements Listener {
     private static Map<String, Long> enderpearlCooldown = new HashMap<String, Long>();
 
-    @EventHandler(priority=EventPriority.MONITOR)
+    @SuppressWarnings("deprecation")
+	@EventHandler(priority=EventPriority.MONITOR)
     public void onProjectileLaunch(ProjectileLaunchEvent event) {
         if (event.isCancelled() || !(event.getEntity().getShooter() instanceof Player)) {
             return;
@@ -34,7 +31,8 @@ implements Listener {
         }
     }
 
-    @EventHandler(priority=EventPriority.HIGH)
+    @SuppressWarnings("deprecation")
+	@EventHandler(priority=EventPriority.HIGH)
     public void onPlayerInteract(PlayerInteractEvent event) {
         if (event.getItem() == null || event.getAction() != Action.RIGHT_CLICK_AIR && event.getAction() != Action.RIGHT_CLICK_BLOCK || event.getItem().getType() != Material.ENDER_PEARL) {
             return;

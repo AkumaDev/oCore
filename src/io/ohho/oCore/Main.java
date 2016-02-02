@@ -1,20 +1,18 @@
 package io.ohho.oCore;
 
-import java.io.File;
-import java.util.logging.Logger;
-
-import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.Server;
-import org.bukkit.command.PluginCommand;
-import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.event.Listener;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import io.ohho.oCore.RulesCommand;
+
+import io.ohho.oCore.commands.ClearChatCommand;
+import io.ohho.oCore.commands.CoordsCommand;
+import io.ohho.oCore.commands.Help;
+import io.ohho.oCore.commands.ReloadCommand;
+import io.ohho.oCore.commands.RulesCommand;
+import io.ohho.oCore.commands.VersionCommand;
 import io.ohho.oCore.listeners.Blocks;
 import io.ohho.oCore.listeners.EnderpearlListener;
-import io.ohho.oCore.listeners.SpawnTag.SpawnTagHandler;
+import io.ohho.oCore.commands.StaffChatCommand;
 
 public class Main
   extends JavaPlugin
@@ -27,16 +25,17 @@ public class Main
   public void onEnable()
   {	 
     getCommand("rules").setExecutor(new RulesCommand());
-    getCommand("commandsreload").setExecutor(new ReloadCommand());;
+    getCommand("oCore reload").setExecutor(new ReloadCommand());;
     getCommand("cc").setExecutor(new ClearChatCommand());;
     getCommand("coords").setExecutor(new CoordsCommand());
+    getCommand("version").setExecutor(new VersionCommand());
+    getCommand("sc").setExecutor(new StaffChatCommand());
     loadConfig();
     getLogger().info("oCore has been enabled without bugs");
     main = this;
     this.pm.registerEvents(new Help(), this);
     pm.registerEvents(new Blocks(), this);
     pm.registerEvents(new EnderpearlListener(), this);
-    pm.registerEvents((Listener) new SpawnTagHandler(), this);
   }
   
   public void onDisable() {}
@@ -49,17 +48,15 @@ public class Main
   public void loadConfig()
   {
     if (!getDataFolder().exists())
-    {  
-      getConfig().set("coordscommand", "Please use /f i <koth name>");
-      
+    {     
       getConfig().set("mapnumber", "11");
       getConfig().set("warzone", "800");
       getConfig().set("normalborder", "3000");
       getConfig().set("netherborder", "3000");
       getConfig().set("endborder", "3000");
-      getConfig().set("teamspeak", "ts.ParaPvP.com");
-      getConfig().set("website", "http://www.ParaPvP.com");
-      getConfig().set("forums", "http://parapvp.com/community");
+      getConfig().set("teamspeak", "ts.example.com");
+      getConfig().set("website", "http://www.example.com");
+      getConfig().set("forums", "http://example.com/community");
       
       getConfig().set("rule1", "Be nice to ohho");
       getConfig().set("rule2", "Be nice to itsBlue");
@@ -90,8 +87,7 @@ public class Main
       getConfig().set("koth2day", "koth2day");
       getConfig().set("koth3day", "koth3day");
       getConfig().set("kothendtime", "kothendday");
-      
-      getConfig().set("scoreboardtitle", "HCPots");
+
       saveConfig();
     }
   }

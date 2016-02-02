@@ -1,4 +1,4 @@
-package io.ohho.oCore;
+package io.ohho.oCore.commands;
 
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;

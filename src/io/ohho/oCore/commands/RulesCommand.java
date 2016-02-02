@@ -1,12 +1,12 @@
-package io.ohho.oCore;
+package io.ohho.oCore.commands;
 
 import org.bukkit.ChatColor;
-import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+
+import io.ohho.oCore.Main;
 
 public class RulesCommand
   implements CommandExecutor
